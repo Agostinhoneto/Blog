@@ -20,6 +20,8 @@ class PostsTableSeeder extends Seeder
                 'title' => 'Post ' . $i,
                 'content' => 'Conteúdo do post ' . $i,
                 'author' => 'Autor ' . $i,
+                'user_id' => '1' . $i,
+
             ]);
         }
     }

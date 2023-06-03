@@ -14,8 +14,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();  
-       return view('posts.index',compact('posts'));
+        $posts = Post::find(1);
+        $user = $posts->user;
+       dd($posts);
+       /* $posts = Post::all();
+        return view('posts.index', compact('posts'));
+        */
     }
 
     /**
@@ -43,8 +47,8 @@ class PostController extends Controller
         ]);
 
         $posts = Post::create($validateDate);
-        return redirect()->route('posts.show',$posts->id)
-        ->with('sucess','Post created successfully');
+        return redirect()->route('posts.show', $posts->id)
+            ->with('sucess', 'Post created successfully');
     }
 
     /**
@@ -57,7 +61,6 @@ class PostController extends Controller
     {
         $posts = Post::findOrFail($id);
         return view('posts.show', compact('posts'));
-
     }
 
     /**
