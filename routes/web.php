@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
 
 // ...
 
@@ -26,4 +28,18 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
-Route::post('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::delete('/posts/destroy/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+// Other routes...
+
+// Authentication routes
+/*
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+*/
+// --------
+
+Route::get('login', [UserController::class, 'showLoginForm'])->name('login');
+Route::post('login', [UserController::class, 'login']);
+Route::post('logout', [UserController::class, 'logout'])->name('logout');
